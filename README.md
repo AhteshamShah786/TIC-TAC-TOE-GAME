@@ -38,7 +38,7 @@ JavaScript for game logic ⚡
 
 Clone this repository
 
-git clone https://github.com/your-username/tic-tac-toe.git
+git clone https://github.com/AhteshamShah786/tic-tac-toe.git
 
 Navigate to the folder
 
