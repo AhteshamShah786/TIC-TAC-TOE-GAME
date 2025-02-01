@@ -36,10 +36,6 @@ JavaScript for game logic ⚡
 
 🚀 How to Run Locally
 
-Clone this repository
-
-git clone https://github.com/AhteshamShah786/tic-tac-toe.git
-
 Navigate to the folder
 
 cd tic-tac-toe
