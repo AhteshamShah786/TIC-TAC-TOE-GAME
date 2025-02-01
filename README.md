@@ -48,9 +48,7 @@ Open index.html in your browser
 
 OR use Live Server in VS Code for a better experience.
 
-📷 Screenshot
 
-(Replace with an actual screenshot of your game)
 
 🏆 Future Improvements
 
