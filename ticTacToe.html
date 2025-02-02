@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Tac-Toe</title>
+    <style>
+      body {
+        background-color: #78c0e0;
+        text-align: center;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        background-color: #edeef5;
+        border-radius: 20px;
+        margin: 5px;
+        font-size: 50px;
+        color: red;
+      }
+
+      .game {
+        width: 350px;
+        height: 350px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+      .reset-btn {
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      .new-game-btn {
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      .winner-para {
+        color: rgb(153, 51, 141);
+        font-size: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Tic Tac Toe</h1>
+
+      <button class="new-game-btn">New Game</button>
+      
+      <div class="container">
+        <div class="game">
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+        </div>
+      </div>
+      <button class="reset-btn">Reset Game</button>
+    </main>
+  </body>
+  <script>
+    let boxes = document.querySelectorAll(".box");
+    let resetBtn = document.querySelector(".reset-btn");
+    let newGameBtn = document.querySelector(".new-game-btn");
+
+    let turn0 = true;
+
+    const winnerPattern = [
+      [0, 1, 2],
+      [0, 3, 6],
+      [0, 4, 8],
+      [1, 4, 7],
+      [2, 5, 8],
+      [2, 4, 6],
+      [3, 4, 5],
+      [6, 7, 8],
+    ];
+
+    const disableBoxes = () => {
+      for (let box of boxes) {
+        box.disabled = true;
+      }
+    };
+
+    const enableBoxes = () => {
+      for (let box of boxes) {
+        box.disabled = false;
+        box.innerText = "";
+      }
+      turn0 = true;
+      clearWinnerMessage();
+    };
+
+    const clearWinnerMessage = () => {
+      let winnerPara = document.querySelector(".winner-para");
+      if (winnerPara) winnerPara.remove();
+    };
+
+    boxes.forEach((box) => {
+      box.addEventListener("click", () => {
+        if (turn0 === true) {
+          box.innerText = "O";
+          turn0 = false;
+        } else {
+          box.innerText = "X";
+          turn0 = true;
+        }
+        box.disabled = true;
+        checkWinner();
+      });
+    });
+
+    let showWinner = (winner) => {
+      let winnerPara = document.createElement("p");
+      document.querySelector("body").append(winnerPara);
+      winnerPara.classList.add("winner-para");
+      winnerPara.innerText = `Congratulations! Winner is ${winner}`;
+      disableBoxes();
+    };
+
+    const checkWinner = () => {
+      for (let pattern of winnerPattern) {
+        let position1Value = boxes[pattern[0]].innerText;
+        let position2Value = boxes[pattern[1]].innerText;
+        let position3Value = boxes[pattern[2]].innerText;
+
+        if (position1Value !== "" && position2Value !== "" && position3Value !== "") {
+          if (position1Value === position2Value && position2Value === position3Value) {
+            showWinner(position1Value);
+            return;
+          }
+        }
+      }
+    };
+
+    resetBtn.addEventListener("click", enableBoxes);
+    newGameBtn.addEventListener("click", enableBoxes);
+  </script>
+</html>
