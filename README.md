@@ -60,7 +60,7 @@ Feel free to fork this repo and enhance the game! Contributions are welcome. �
 
 📬 Contact
 
-📧 Email: ahteshamshah11@gmail.com🎭 Fiverr: [My Fiverr Profile](https://www.fiverr.com/s/Gzgw5Y7)
+📧 Email: ahteshamshah11@gmail.com
 
 ⭐ If you like this project, don't forget to star the repository!
 
